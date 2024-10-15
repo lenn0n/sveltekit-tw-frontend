@@ -1,0 +1,146 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+@font-face {
+  font-family: Roboto;
+  src: url(../fonts/roboto.ttf);
+}
+
+@keyframes fadeInAnimation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.animated {
+  animation: fadeInAnimation ease 1.0s;
+  animation-iteration-count: 1;
+}
+
+input {
+  font-size: .90rem;
+  width: 100%;
+  padding: 4px 0px 4px 0px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #c1c1c1;
+  --tw-ring-shadow: 0 0 #000 !important;
+}
+
+input:focus {
+  outline-width: 0;
+  border-bottom: 2px solid black;
+}
+
+select:focus {
+  outline-width: 0
+}
+
+body {
+  @apply md:bg-robot bg-blend-darken bg-cover bg-no-repeat bg-[#ECEEF0] font-['Roboto']
+}
+
+.login-page {
+  @apply h-full md:h-screen w-screen flex justify-center md:items-center animated
+}
+
+.login-form {
+  @apply bg-white rounded-md border-2 border-[#FBFAFD] md:h-[450px] w-[750px] md:grid md:grid-cols-2 drop-shadow-2xl pb-4 md:pb-0
+}
+
+.login-header {
+  @apply my-6
+}
+
+.login-header h2 {
+  @apply font-bold tracking-[.24rem]
+}
+
+.login-leftside {
+  @apply bg-books bg-right-bottom md:bg-bottom bg-cover bg-no-repeat ml-[-2px] mt-[-2px] mb-[-2px] md:rounded-l-md col-span-1 
+  h-[200px] w-[101.2%] sm:w-[100.7%] md:h-[101%]
+}
+
+.login-rightside {
+  @apply col-span-1 w-full px-10 pt-4 h-[calc(100vh_-_100%)] md:h-full
+}
+
+.login-button {
+  @apply flex items-center justify-center py-2 px-5 bg-slate-100 w-full rounded-md bg-opacity-45 border-2 
+  border-[#FBFAFD] hover:scale-[1.02] transition-all duration-500 text-[14px]
+}
+
+.login-button img {
+  @apply w-[24px] h-[24px] me-4
+}
+
+.form-label {
+  @apply text-[14px] 
+}
+
+.login-separator {
+  @apply w-full text-center border-b-[1px] border-[#c1c1c1] leading-[0.1em]  mt-[30px] mb-[20px] text-[14px]
+}
+
+.login-separator span{
+  @apply bg-[#fff] px-[10px]
+}
+
+.common-page {
+  @apply h-screen w-screen flex justify-center md:items-center animated
+}
+
+.common-page-wrapper {
+  @apply w-[100%] md:w-[50%] lg:w-[40%] bg-white h-[100%] md:h-[70%] border-2 border-[#FBFAFD] drop-shadow-2xl rounded-md
+}
+
+.common-title{
+  @apply p-3 text-center mt-2 border-b-2 border-dashed text-[12px] md:text-[16px]
+}
+
+.common-title h2 {
+  @apply  font-bold  tracking-[.24rem]
+}
+
+.common-title p {
+  @apply text-[#515151] text-[12px]
+}
+
+.story-body {
+  @apply h-full overflow-y-scroll break-words scroll-smooth overflow-x-hidden
+}
+
+.story-wrapper {
+  @apply flex justify-between flex-col h-[calc(100%_-_66px)]
+}
+
+.story-footer {
+  @apply border-t-2 pt-4 border-dashed relative
+}
+
+.plot-wrapper {
+  @apply w-full overflow-auto mt-10
+}
+
+.plot-selection {
+  @apply flex items-center justify-center flex-col
+}
+
+.plot-selection p{
+  @apply mb-2 text-[14px] font-bold tracking-[.24rem]
+}
+
+.dropdown-button {
+  @apply inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 
+  text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50
+}
+
+.dropdown-menu {
+  @apply absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none
+}
