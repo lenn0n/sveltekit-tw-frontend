@@ -33,7 +33,6 @@
 
 			fetch("https://lenn0n.pythonanywhere.com/api/v1/generate-story", {
 				method: "POST",
-				mode: 'cors',
 				headers: {
 					Accept: "application/json",
 					"Content-Type": "application/json",

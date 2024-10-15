@@ -113,7 +113,7 @@
 				</div>
 
 				<Button
-					platform="undefined"
+					platform={undefined}
 					icon=""
 					isSocial={false}
 					handleOnClick={handleLogin}
