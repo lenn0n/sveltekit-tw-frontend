@@ -31,7 +31,7 @@
 			scrollBody();
 			isLoading = true;
 
-			fetch("https://lenn0n.pythonanywhere.com/api/v1/generate-story", {
+			fetch("https://python-flask-backend-lake.vercel.app/api/v1/generate-story", {
 				method: "POST",
 				headers: {
 					Accept: "application/json",
