@@ -2,10 +2,32 @@
 	import { goto } from "$app/navigation";
 	import { page } from "$app/stores";
 	import useCookie from "$utils/useCookie";
+
+	const { getCookie, removeCookie } = useCookie();
 	let show: boolean = false;
-	
+
 	const toggleShow = () => {
 		show = !show;
+	};
+
+	interface UserDataInterface {
+		email: string;
+		user_metadata: {
+			avatar_url: string;
+		};
+	}
+
+	const returnUserData = (): UserDataInterface => {
+		try {
+			return JSON.parse(getCookie("user"));
+		} catch (error) {
+			return {
+				email: "",
+				user_metadata: {
+					avatar_url: "",
+				},
+			};
+		}
 	};
 
 	const checkIfSelected = (path: string) => {
@@ -19,8 +41,8 @@
 	};
 
 	const handleLogout = () => {
-		const { removeCookie } = useCookie();
 		removeCookie({ name: "token", domain: window.location.hostname });
+		removeCookie({ name: "user", domain: window.location.hostname });
 		setTimeout(() => {
 			window.localStorage.clear();
 			goto("/");
@@ -59,11 +81,28 @@
   ${show ? "duration-100 opacity-100 scale-100  z-[3]" : "duration-500 opacity-0 scale-50 pointer-events-none z-[-2]"}
   `}
 		role="menu"
+		on:mouseleave={() => { show = false }}
 		aria-orientation="vertical"
 		aria-labelledby="menu-button"
 		tabindex={-1}
 	>
 		<div class="py-1" role="none">
+			<div class="border-b-[1px] p-2">
+				<div class="flex flex-row">
+					<img
+						src={returnUserData().user_metadata.avatar_url ||
+							"https://supabase.com/dashboard/img/supabase-logo.svg"}
+						alt=""
+						height="40"
+						width="40"
+						class="rounded-md"
+					/>
+					<div class="">
+						<div class="text-[10px] ms-3 text-[#515151]">Logged In As:</div>
+						<div class="text-[12px] ms-3">{returnUserData().email}</div>
+					</div>
+				</div>
+			</div>
 			<button
 				on:click={() => {
 					handleNavigatePage("/story");

@@ -38,6 +38,11 @@
 						value: data.session.access_token,
 						domain: window.location.hostname,
 					});
+					setCookie({
+						name: "user",
+						value: JSON.stringify(data.session.user),
+						domain: window.location.hostname,
+					});
 					goto("/story");
 				} else {
 					isLoading = false;
@@ -48,25 +53,30 @@
 	};
 
 	onMount(() => {
-		checkTokenInLocalStorage();
+		if (window.location.hash) {
+			// SUPABASE SETS A TOKEN IN THE LOCALSTORAGE AFTER CALLING A CALLBACK
+			isLoading = true;
+			setTimeout(() => {
+				checkTokenInLocalStorage();
+			}, 1000);
+		} else {
+			checkTokenInLocalStorage();
+		}
 	});
 
 	const checkTokenInLocalStorage = () => {
-		setTimeout(() => {
-			const token = localStorage.get("sb-hvnydrfnekqopyjrvgsv-auth-token");
-			// CHECK IF THERES NO TOKEN IN THE COOKIES
-			if (!getCookie("token") && token) {
-				isLoading = true;
-				const access_token = JSON.parse(token).access_token;
-				setCookie({ name: "token", value: access_token, domain: window.location.hostname });
-				// CLEAN UP THE STORAGE. SUPABASE IS PASSING TOO MANY INFO AND WE DONT NEED TO EXPOSE IT FOR NOW.
-				// WE JUST NEED THE TOKEN.
-				// window.localStorage.clear()
-				goto("/story");
-			}
-		}, 1000); 
-		// WAIT FOR LOCALSTORAGE TO FINISH SAVING
-		// SUPABASE SETS A TOKEN IN THE LOCALSTORAGE AFTER CALLING A CALLBACK
+		const token = localStorage.get("sb-hvnydrfnekqopyjrvgsv-auth-token");
+		// CHECK IF THERES NO TOKEN IN THE COOKIES
+		if (!getCookie("token") && token) {
+			isLoading = true;
+			const hash = JSON.parse(token);
+			setCookie({ name: "token", value: hash.access_token, domain: window.location.hostname });
+			setCookie({ name: "user", value: JSON.stringify(hash.user), domain: window.location.hostname });
+			// CLEAN UP THE STORAGE. SUPABASE IS PASSING TOO MANY INFO AND WE DONT NEED TO EXPOSE IT FOR NOW.
+			// WE JUST NEED THE TOKEN.
+			// window.localStorage.clear()
+			goto("/story");
+		}
 	};
 </script>
 
@@ -117,8 +127,14 @@
 					icon=""
 					isSocial={false}
 					handleOnClick={handleLogin}
-					customClassName="!bg-[#2f4262] !bg-opacity-95 text-white">Login</Button
+					customClassName="!bg-[#2f4262] !bg-opacity-95 text-white"
 				>
+					{#if isLoading}
+						<span>Logging In...</span>
+					{:else}
+						<span>Login</span>
+					{/if}
+				</Button>
 				<div class="login-separator"><span>or</span></div>
 				<Button
 					platform="Github"

@@ -87,7 +87,7 @@
 		<div class="story-body" bind:this={storyBody}>
 			<!-- PLACEHOLDER -->
 			{#if responseValue === null && convoList.length === 0}
-				<div class="flex items-center justify-center h-[calc(100%_-_20px)] flex-col">
+				<div class="flex items-center justify-center h-[calc(100%_-_40px)] flex-col">
 					<img src={EmptyIcon} alt="" class="opacity-30 h-[300px] w-[300px]" />
 					<p class="mt-[-50px] text-[#c1c1c1]">It's empty here. Pick a topic.</p>
 				</div>
