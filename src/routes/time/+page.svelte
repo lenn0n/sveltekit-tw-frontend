@@ -8,8 +8,21 @@
 	let data = [{ x: [], y: [] }];
 	let isLoading: boolean = true;
 
+	const getSelected = () => {
+		switch (area) {
+			case "LUZ_MKT_REQT":
+				return "Luzon";
+			case "VIS_MKT_REQT":
+				return "Visayas";
+			case "MIN_MKT_REQT":
+				return "Mindanao";
+			default:
+				return "Luzon";
+		}
+	};
+
 	const fetchEnergy = async () => {
-		isLoading = true
+		isLoading = true;
 		fetch("https://python-flask-backend-lake.vercel.app/api/v1/retrieve-time", {
 			method: "POST",
 			headers: {
@@ -38,14 +51,10 @@
 </script>
 
 <Wrapper title="Main Time Series Page" desc="using PlotlyJS">
-	<div class="my-10 flex items-center justify-center">
-		<select bind:value={area} on:change={() => { fetchEnergy()}}>
-			<option value="LUZ_MKT_REQT">Luzon</option>
-			<option value="VIS_MKT_REQT">Visayas</option>
-			<option value="MIN_MKT_REQT">Mindanao</option>
-		</select>
+	<div class="flex items-center justify-center my-6 xl:my-10">
+		PH Energy Consumption
 	</div>
-	<div class={`max-w-[98%] ${isLoading ? "hidden" : "block"} animated`}>
+	<div class={`${isLoading ? "hidden" : "block"} time-graph`}>
 		<Plot
 			{data}
 			layout={{
@@ -55,7 +64,21 @@
 			debounce={250}
 		/>
 	</div>
-	<div class={`max-w-[100%] ${isLoading ? 'block': 'hidden'} bg-slate-700 bg-opacity-5 animate-pulse rounded-lg h-[40%] mx-10`}>
-
+	<div class={`${isLoading ? "flex" : "hidden"} time-graph-placeholder`}>Loading Graph</div>
+	<div class="time-selection">
+		<label for="" class="me-2 text-[#515151]">Select Area:</label>
+		<div class="border-[1px] rounded-md p-1">
+			<select
+				disabled={isLoading}
+				bind:value={area}
+				on:change={() => {
+					fetchEnergy();
+				}}
+			>
+				<option value="LUZ_MKT_REQT">Luzon</option>
+				<option value="VIS_MKT_REQT">Visayas</option>
+				<option value="MIN_MKT_REQT">Mindanao</option>
+			</select>
+		</div>
 	</div>
 </Wrapper>

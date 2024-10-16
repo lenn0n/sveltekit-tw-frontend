@@ -7,10 +7,10 @@ interface DataInterface {
 }
 
 export const routeGuard = (data: DataInterface, guarded: boolean) => {
-    if (!data.cookies.get('token') && guarded) {
-      redirect(302, '/');
-    }
-    if (data.cookies.get('token') && !guarded) {
-      redirect(302, '/story');
-    }
+    // if (!data.cookies.get('token') && guarded) {
+    //   redirect(302, '/');
+    // }
+    // if (data.cookies.get('token') && !guarded) {
+    //   redirect(302, '/story');
+    // }
 }

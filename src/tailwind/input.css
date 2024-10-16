@@ -144,3 +144,17 @@ body {
 .dropdown-menu {
   @apply absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none
 }
+
+.time-selection {
+  @apply my-10 flex items-center justify-center mt-0 pt-[-5px]
+}
+
+.time-graph {
+  @apply max-w-[98%] animated 
+}
+
+.time-graph-placeholder {
+  @apply bg-slate-700 bg-opacity-5 animate-pulse rounded-lg h-[41%] 
+  tracking-[.24rem]
+  mx-10 items-center justify-center max-w-[100%] mb-10
+}
