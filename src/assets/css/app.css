@@ -578,16 +578,32 @@ video {
   top: 0.75rem;
 }
 
-.top-0 {
-  top: 0px;
-}
-
 .z-\[-2\] {
   z-index: -2;
 }
 
 .z-\[3\] {
   z-index: 3;
+}
+
+.my-3 {
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.my-5 {
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.my-10 {
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.mx-10 {
+  margin-left: 2.5rem;
+  margin-right: 2.5rem;
 }
 
 .-ml-1 {
@@ -602,6 +618,10 @@ video {
   margin-inline-end: 0.5rem;
 }
 
+.ms-3 {
+  margin-inline-start: 0.75rem;
+}
+
 .mt-5 {
   margin-top: 1.25rem;
 }
@@ -610,8 +630,8 @@ video {
   margin-top: -50px;
 }
 
-.ms-3 {
-  margin-inline-start: 0.75rem;
+.mt-3 {
+  margin-top: 0.75rem;
 }
 
 .block {
@@ -650,6 +670,30 @@ video {
   height: calc(100% - 40px);
 }
 
+.h-24 {
+  height: 6rem;
+}
+
+.h-\[10\%\] {
+  height: 10%;
+}
+
+.h-\[30\%\] {
+  height: 30%;
+}
+
+.h-\[5\%\] {
+  height: 5%;
+}
+
+.h-\[50\%\] {
+  height: 50%;
+}
+
+.h-\[40\%\] {
+  height: 40%;
+}
+
 .w-2 {
   width: 0.5rem;
 }
@@ -664,6 +708,14 @@ video {
 
 .w-full {
   width: 100%;
+}
+
+.max-w-\[98\%\] {
+  max-width: 98%;
+}
+
+.max-w-\[100\%\] {
+  max-width: 100%;
 }
 
 .scale-100 {
@@ -694,6 +746,16 @@ video {
   animation: bounce 1s infinite;
 }
 
+@keyframes pulse {
+  50% {
+    opacity: .5;
+  }
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
 .flex-row {
   flex-direction: row;
 }
@@ -722,6 +784,10 @@ video {
   overflow-wrap: break-word;
 }
 
+.break-all {
+  word-break: break-all;
+}
+
 .rounded-full {
   border-radius: 9999px;
 }
@@ -732,6 +798,10 @@ video {
 
 .rounded-md {
   border-radius: 0.375rem;
+}
+
+.border-2 {
+  border-width: 2px;
 }
 
 .border-b-\[1px\] {
@@ -762,6 +832,11 @@ video {
   background-color: rgb(100 116 139 / var(--tw-bg-opacity));
 }
 
+.bg-slate-700 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(51 65 85 / var(--tw-bg-opacity));
+}
+
 .\!bg-opacity-95 {
   --tw-bg-opacity: 0.95 !important;
 }
@@ -770,12 +845,20 @@ video {
   --tw-bg-opacity: 0.05;
 }
 
-.p-5 {
-  padding: 1.25rem;
+.bg-opacity-30 {
+  --tw-bg-opacity: 0.3;
+}
+
+.bg-opacity-20 {
+  --tw-bg-opacity: 0.2;
 }
 
 .p-2 {
   padding: 0.5rem;
+}
+
+.p-5 {
+  padding: 1.25rem;
 }
 
 .px-4 {
@@ -814,6 +897,10 @@ video {
   text-align: start;
 }
 
+.text-\[10px\] {
+  font-size: 10px;
+}
+
 .text-\[12px\] {
   font-size: 12px;
 }
@@ -829,10 +916,6 @@ video {
 .text-sm {
   font-size: 0.875rem;
   line-height: 1.25rem;
-}
-
-.text-\[10px\] {
-  font-size: 10px;
 }
 
 .font-bold {

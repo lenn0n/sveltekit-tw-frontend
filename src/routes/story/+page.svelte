@@ -97,7 +97,7 @@
 				<!-- DISPLAY CONVERSATION -->
 				{#each convoList as cL}
 					<div
-						class={`w-full flex py-2 rounded-lg break-words overflow-x-hidden
+						class={`w-full flex p-2 rounded-lg break-all overflow-x-hidden
 					${cL.sender == "bot" ? "justify-start" : "justify-center bg-slate-400 bg-opacity-5 text-slate-500"} `}
 					>
 						{cL.message}

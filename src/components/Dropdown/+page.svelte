@@ -99,7 +99,7 @@
 					/>
 					<div class="">
 						<div class="text-[10px] ms-3 text-[#515151]">Logged In As:</div>
-						<div class="text-[12px] ms-3">{returnUserData().email}</div>
+						<div class="text-[12px] ms-3 break-all">{returnUserData().email}</div>
 					</div>
 				</div>
 			</div>

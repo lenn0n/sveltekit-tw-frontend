@@ -8,8 +8,8 @@
 	import supabase from "$lib/supabaseClient";
 	import useCookie from "$utils/useCookie";
 	import localStorage from "$utils/useLocalStorage";
-
-	type Provider = "github";
+	import type { Provider } from "$types/auth";
+	
 	let emailValue: string = "";
 	let passValue: string = "";
 	let isLoading: boolean = false;

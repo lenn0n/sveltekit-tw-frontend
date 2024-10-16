@@ -1,0 +1,1 @@
+export type AreaTypes = "LUZ_MKT_REQT" | "VIS_MKT_REQT" | "MIN_MKT_REQT"
