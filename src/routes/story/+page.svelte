@@ -31,7 +31,7 @@
 			scrollBody();
 			isLoading = true;
 
-			fetch("https://python-flask-backend-lake.vercel.app/api/v1/generate-story", {
+			fetch("http://3.107.58.92/api/v1/generate-story", {
 				method: "POST",
 				headers: {
 					Accept: "application/json",
