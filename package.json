@@ -23,6 +23,7 @@
 	"type": "module",
 	"dependencies": {
 		"@supabase/supabase-js": "^2.45.4",
+		"replicate": "^1.0.1",
 		"svelte-plotly.js": "^1.2.0"
 	}
 }

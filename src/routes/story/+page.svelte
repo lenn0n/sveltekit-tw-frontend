@@ -31,7 +31,7 @@
 			scrollBody();
 			isLoading = true;
 
-			fetch("https://python-flask-backend-lake.vercel.app/api/v1/generate-story", {
+			fetch("/api/story", {
 				method: "POST",
 				headers: {
 					Accept: "application/json",
@@ -43,6 +43,7 @@
 					isLoading = false;
 					// PIPE CHUNKS TO WRITABLE STREAM
 					const decoderStream = new TextDecoderStream("utf-8");
+					responseValue = ""
 					const writer = new WritableStream({
 						write(chunk) {
 							responseValue += chunk;
@@ -97,8 +98,8 @@
 				<!-- DISPLAY CONVERSATION -->
 				{#each convoList as cL}
 					<div
-						class={`w-full flex p-2 rounded-lg break-all overflow-x-hidden
-					${cL.sender == "bot" ? "justify-start" : "justify-center bg-slate-400 bg-opacity-5 text-slate-500"} `}
+						class={`w-full flex p-2 rounded-lg break-all overflow-x-hidden whitespace-pre-line
+					${cL.sender == "bot" ? "justify-start mt-[-45px]" : "justify-center bg-slate-400 bg-opacity-5 text-slate-500"} `}
 					>
 						{cL.message}
 					</div>
@@ -118,7 +119,7 @@
 
 			<!-- STREAM RESPONSE -->
 			{#if responseValue}
-				<div class="p-5 animated">
+				<div class="px-6 animated whitespace-pre-line mt-[-45px]">
 					{responseValue}
 				</div>
 			{/if}
